@@ -8,6 +8,7 @@ const upload = require('../middleware/uploadMiddleware');
 // Get all hotels
 exports.getAllHotels = async (req, res) => {
   try {
+    
     const hotels = await Hotel.find();
     res.json(hotels);
   } catch (error) {

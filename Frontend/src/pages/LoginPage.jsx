@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { Container, TextField, Button, Typography, Box, Card } from "@mui/material";
+import { useDispatch} from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {login} from '../store/slices/authSlice'
+
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,7 +20,17 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post("http://localhost:2024/Admin/login", { email, password });
+
+      const userData = {
+        name: response.data.name,
+        email: response.data.email,
+        id: response.data._id,
+        token: response.data.token
+      }
+
+
       localStorage.setItem("token", response.data.token);
+      dispatch(login(userData))
       alert("Login Successful!");
       navigate("/"); // Redirect to Home Page
     } catch (err) {

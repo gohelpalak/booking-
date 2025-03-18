@@ -11,6 +11,7 @@ import RegisterPage from "./pages/RegisterPage";
 import BookingPage from "./pages/BookingPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/ui/navbar";
+import HotelDetailsPage from "./pages/HotelDetailsPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/flights" element={<FlightPage />} />
           <Route path="/hotels" element={<HotelsPage />} />
+          <Route path="/hotels/:id" element={<HotelDetailsPage/>} />
           <Route path="/cars" element={<CarPage />} />
           <Route path="/booking" element={<ProtectedRoute><BookingPage/></ProtectedRoute>} />
           <Route path="/login" element={<LoginPage />} />

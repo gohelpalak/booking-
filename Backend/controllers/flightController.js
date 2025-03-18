@@ -20,7 +20,7 @@ exports.addflight = upload.single("image"), async (req,res)=>{
     try{
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
-        const flight = new Flight(req.body);
+        const flight = new Flight(req.body,imageUrl);
         await flight.save();
         res.status(201).json({message:"Flight add successfully",flight});
     }catch(error){
