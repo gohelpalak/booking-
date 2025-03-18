@@ -1,39 +1,36 @@
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
-// import Home from "./pages/Home";
-// import Login from "./pages/Login";
-// import Register from "./pages/Register";
-// import AdminPanel from "./pages/AdminPanel";
-// import BookingPage from "./pages/BookingPage";
-import PrivateRoute from "./components/PrivateRoute";
-import AdminPanel from "./pages/AdminPanel";
-import HomePage from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import theme from "./theme"; 
+import HomePage from "./pages/HomePage";
+import FlightPage from "./pages/FlightsPage";
+// import Navbar from "./components/Navbar";
+import HotelsPage from "./pages/HotelsPage";
+import CarPage from "./pages/CarsPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 import BookingPage from "./pages/BookingPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Navbar from "./components/ui/navbar";
 
-const App = () => {
-  const { user } = useSelector((state) => state.auth);
-
+function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register/>} />
-
-        {/* Protected Route for Admin Panel */}
-        <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
-          <Route path="/admin" element={<AdminPanel />} />
-        </Route>
-
-        {/* Protected Route for Booking */}
-        <Route element={<PrivateRoute allowedRoles={["user", "admin"]} />}>
-          <Route path="/booking" element={<BookingPage />} />
-        </Route>
-      </Routes>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/flights" element={<FlightPage />} />
+          <Route path="/hotels" element={<HotelsPage />} />
+          <Route path="/cars" element={<CarPage />} />
+          <Route path="/booking" element={<ProtectedRoute><BookingPage/></ProtectedRoute>} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage/>} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
-};
+}
 
 export default App;
