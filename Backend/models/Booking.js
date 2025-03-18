@@ -8,17 +8,24 @@ const BookingSchema = new mongoose.Schema({
     },
     serviceType: {
         type: String,
-        enum: ['flight', 'hotel'],
+        enum: ['flight', 'hotel','car'],
         required: true
     },
     serviceId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        refPath: 'serviceType'
     },
-    date: {
+    startDate: {
         type: Date,
         required: true
+    },
+
+    enddate: {
+        type: Date,
+    },
+    totalPrice:{
+        type:Number,
+        required:true
     },
     status: {
         type: String,

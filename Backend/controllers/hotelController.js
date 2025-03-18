@@ -1,4 +1,9 @@
 const Hotel = require("../models/Hotel");
+// const express = require('express');
+// const router = express.Router();
+
+const upload = require('../middleware/uploadMiddleware');
+
 
 // Get all hotels
 exports.getAllHotels = async (req, res) => {
@@ -24,7 +29,9 @@ exports.getHotelById = async (req, res) => {
 // Create hotel (Admin Only)
 exports.createHotel = async (req, res) => {
   try {
-    const hotel = new Hotel(req.body);
+
+    const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
+    const hotel = new Hotel(req.body, imageUrl);
     await hotel.save();
     res.status(201).json({ message: "Hotel created successfully", hotel });
   } catch (error) {

@@ -36,7 +36,11 @@ const flightSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }    // Record Creation Time
+    } ,   // Record Creation Time
+
+    imageUrl:{
+        type:String
+    }
 });
 
 module.exports = mongoose.model('Flight', flightSchema);

@@ -1,4 +1,8 @@
 const Flight = require("../models/Flight");
+const express = require("express");
+const router = express.Router();
+// const uploas = require("../middleware/uploadMiddleware");
+const upload = require("../middleware/uploadMiddleware");
 
 exports.getflights = async(req,res)=>{
     try{
@@ -9,10 +13,13 @@ exports.getflights = async(req,res)=>{
     }
 }
 
-exports.addflight = async (req,res)=>{
+exports.addflight = upload.single("image"), async (req,res)=>{
     console.log("=>>>>><<<<<=",req.body);
     
+
     try{
+    const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
+
         const flight = new Flight(req.body);
         await flight.save();
         res.status(201).json({message:"Flight add successfully",flight});

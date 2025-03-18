@@ -66,7 +66,7 @@ exports.loginAdmin = async (req,res)=>{
     
 }
 
-exports.getUserProfule = async (req,res)=>{
+exports.getUserProfile = async (req,res)=>{
     try{
         console.log("req.user",req.user);
         
