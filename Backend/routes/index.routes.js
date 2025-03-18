@@ -7,5 +7,4 @@ router.use('/hotel',require('./hotelRoutes'))
 router.use('/cars',require('./carRoutes'))
 router.use('/booking',require('./bookingRoutes'));
 router.use('/image', require('./image.Routes'));
-// router.use('/flight',require('./flightRoutes'));
 module.exports = router;

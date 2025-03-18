@@ -4,7 +4,6 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "./theme"; 
 import HomePage from "./pages/HomePage";
 import FlightPage from "./pages/FlightsPage";
-// import Navbar from "./components/Navbar";
 import HotelsPage from "./pages/HotelsPage";
 import CarPage from "./pages/CarsPage";
 import LoginPage from "./pages/LoginPage";
