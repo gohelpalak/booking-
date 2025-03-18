@@ -9,7 +9,7 @@ const HotelsPage = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axios.get("http://localhost:2024/api/hotels");
+        const response = await axios.get("http://localhost:2024/hotel/getallhotel");
         setHotels(response.data);
       } catch (error) {
         console.error("Error fetching hotels:", error);

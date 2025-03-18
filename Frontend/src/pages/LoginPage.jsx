@@ -14,7 +14,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:2024/api/users/login", { email, password });
+      const response = await axios.post("http://localhost:2024/Admin/login", { email, password });
       localStorage.setItem("token", response.data.token);
       alert("Login Successful!");
       navigate("/"); // Redirect to Home Page
@@ -24,46 +24,75 @@ const LoginPage = () => {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Card className="p-6 mt-20 shadow-xl">
-        <Typography variant="h5" align="center" gutterBottom>
-          🔑 Login to Your Account
-        </Typography>
-        {error && (
-          <Typography variant="body2" color="error" align="center">
-            {error}
+    <Box
+      sx={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        // background: "linear-gradient(to right, #ff758c, #ff7eb3)",
+      }}
+    >
+      <Container maxWidth="xs">
+        <Card
+          sx={{
+            padding: 4,
+            borderRadius: 5,
+            boxShadow: "0 6px 15px rgba(0, 0, 0, 0.3)",
+            backdropFilter: "blur(12px)",
+            background: "rgba(255, 255, 255, 0.2)",
+          }}
+        >
+          <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
+            🔐 Welcome Back!
           </Typography>
-        )}
-        <form onSubmit={handleLogin}>
-          <TextField
-            label="Email"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <TextField
-            label="Password"
-            type="password"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <Button type="submit" variant="contained" color="primary" fullWidth className="mt-4">
-            Login
-          </Button>
-        </form>
-        <Typography variant="body2" align="center" className="mt-4">
-          Don't have an account? <a href="/register">Sign Up</a>
-        </Typography>
-      </Card>
-    </Container>
+          {error && (
+            <Typography variant="body2" color="error" align="center">
+              {error}
+            </Typography>
+          )}
+          <form onSubmit={handleLogin}>
+            <TextField
+              label="Email Address"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <TextField
+              label="Password"
+              type="password"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              sx={{
+                marginTop: 2,
+                backgroundColor: "",
+                color: "white",
+                fontWeight: "bold",
+                '&:hover': { backgroundColor: "#c70039" },
+              }}
+            >
+              Login
+            </Button>
+          </form>
+          <Typography variant="body2" align="center" sx={{ marginTop: 2 }}>
+            Don't have an account? <a href="/register" style={{ color: "#ff4b5c", fontWeight: "bold" }}>Sign Up</a>
+          </Typography>
+        </Card>
+      </Container>
+    </Box>
   );
 };
 
-export default LoginPage;
+export default LoginPage; 
