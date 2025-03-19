@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Typography, Card, CardMedia, CardContent, Button } from "@mui/material";
 import axios from "axios";
+// const userId = user ? user.id : null;
+
 
 const HotelDetailsPage = () => {
   const { id } = useParams();
@@ -25,8 +27,11 @@ const HotelDetailsPage = () => {
     try {
       const response = await axios.post("http://localhost:2024/booking/createbooking", {
         hotelId: id,
-        userId: "user123", // Replace with actual user ID
+        userId: user.id, // Replace with actual user ID,
+        
       });
+      
+      
       alert("Booking successful!");
     } catch (error) {
       console.error("Error booking hotel:", error);

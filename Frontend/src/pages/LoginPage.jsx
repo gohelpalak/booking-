@@ -29,7 +29,9 @@ const LoginPage = () => {
       }
 
 
-      localStorage.setItem("token", response.data.token);
+      // localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token",JSON.stringify(response.data.token));
+      localStorage.setItem("userdata", JSON.stringify(userData));
       dispatch(login(userData))
       alert("Login Successful!");
       navigate("/"); // Redirect to Home Page
