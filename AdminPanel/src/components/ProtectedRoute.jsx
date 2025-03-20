@@ -1,15 +1,27 @@
+// import { Navigate, Outlet } from "react-router-dom";
+
+// const ProtectedRoute = ({ isAdmin }) => {
+//     const token = localStorage.getItem("token") || "";
+
+//     if (!token) return <Navigate to="/login" replace />;
+
+//     if (isAdmin) {
+//         const user = JSON.parse(localStorage.getItem("user") || "{}");
+//         if (!user.role || user.role !== "admin") return <Navigate to="/unauthorized" replace />;
+//     }
+
+//     return <Outlet />;
+// };
+
+// export default ProtectedRoute;
+
+
 import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ isAdmin }) => {
-    const token = localStorage.getItem("token");
-    if (!token) return <Navigate to="/login" />;
+const ProtectedRoute = () => {
+  const adminToken = localStorage.getItem("adminToken");
 
-    if (isAdmin) {
-        const user = JSON.parse(localStorage.getItem("user"));
-        if (!user || user.role !== "admin") return <Navigate to="/unauthorized" />;
-    }
-
-    return <Outlet />;
+  return adminToken ? <Outlet /> : <Navigate to="/admin/login" />;
 };
 
 export default ProtectedRoute;
