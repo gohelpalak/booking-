@@ -14,9 +14,6 @@ exports.getflights = async(req,res)=>{
 }
 
 exports.addflight = upload.single("image"), async (req,res)=>{
-    console.log("=>>>>><<<<<=",req.body);
-    
-
     try{
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
