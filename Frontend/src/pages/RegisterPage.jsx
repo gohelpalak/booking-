@@ -18,7 +18,7 @@ const RegisterPage = () => {
     role: "user",
   });
   const [error, setError] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -29,7 +29,7 @@ const RegisterPage = () => {
     setError("");
 
     try {
-      await axios.post("http://localhost:2024/Admin/register", user);
+      await axios.post("http://localhost:2000/Admin/register", user);
       alert("Registration Successful! Please Login.");
       navigate("/login");
     } catch (err) {

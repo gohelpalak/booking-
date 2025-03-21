@@ -9,7 +9,7 @@ const CarPage = () => {
     useEffect(() => {
         const fetchCars = async () => {
             try {
-                const response = await axios.get("http://localhost:2024/cars/getallcars");
+                const response = await axios.get("http://localhost:2000/cars/getallcars");
                 console.log("Fetched Cars:", response.data); // Debugging Line
                 setCars(response.data);
             } catch (error) {

@@ -21,7 +21,7 @@ const CarsManagement = () => {
     useEffect(() => {
         const fetchCars = async () => {
             try {
-                const response = await fetch("http://localhost:2024/cars/getallcars", {
+                const response = await fetch("http://localhost:2000/cars/getallcars", {
                     headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` },
                 });
                 const data = await response.json();
@@ -39,7 +39,7 @@ const CarsManagement = () => {
         console.log("Adding car:", newCar);
 
         // try {
-        //     const response = await fetch("http://localhost:2024/cars/addcar", {
+        //     const response = await fetch("http://localhost:2000/cars/addcar", {
         //         method: "POST",
         //         headers: {
         //             "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const CarsManagement = () => {
         //     console.error("Error adding car:", error);
         // }
         try {
-            const response = await fetch("http://localhost:2024/cars/addcar", {
+            const response = await fetch("http://localhost:2000/cars/addcar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -110,7 +110,7 @@ const CarsManagement = () => {
 
     const handleDeleteCar = async (id) => {
         try {
-            await fetch(`http://localhost:2024/admin/cars/deletecar/${id}`, {
+            await fetch(`http://localhost:2000/admin/cars/deletecar/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` },
             });

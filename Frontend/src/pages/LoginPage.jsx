@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Container, TextField, Button, Typography, Box, Card } from "@mui/material";
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {login} from '../store/slices/authSlice'
+import { login } from '../store/slices/authSlice'
 
 
 
@@ -19,7 +19,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:2024/Admin/login", { email, password });
+      const response = await axios.post("http://localhost:2000/Admin/login", { email, password });
 
       const userData = {
         name: response.data.name,
@@ -30,7 +30,7 @@ const LoginPage = () => {
 
 
       // localStorage.setItem("token", response.data.token);
-      localStorage.setItem("token",JSON.stringify(response.data.token));
+      localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("userdata", JSON.stringify(userData));
       dispatch(login(userData))
       alert("Login Successful!");

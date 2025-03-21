@@ -8,7 +8,7 @@ const FlightPage = () => {
   useEffect(() => {
     const fetchFlights = async () => {
       try {
-        const response = await axios.get("http://localhost:2024/flight/flights");
+        const response = await axios.get("http://localhost:2000/flight/flights");
         setFlights(response.data);
       } catch (error) {
         console.error("Error fetching flights:", error);

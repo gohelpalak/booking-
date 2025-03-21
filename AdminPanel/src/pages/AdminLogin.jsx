@@ -9,44 +9,44 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  
 
-    const handleLogin = async (e) => {
-      e.preventDefault();
-      setError("");
-      setLoading(true);
-console.log("email", email, "password", password);
 
-      try {
-        const response = await fetch("http://localhost:2024/admin/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        });
-console.log("API Response:", response);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    console.log("email", email, "password", password);
 
-        const data = await response.json();
-        console.log("API Response:", data); // ✅ Debug API response
+    try {
+      const response = await fetch("http://localhost:2000/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      console.log("API Response:", response);
 
-        if (!response.ok) {
-          throw new Error(data.message || "Login failed"); // 👈 Error Message from API
-        }
-  
+      const data = await response.json();
+      console.log("API Response:", data); // ✅ Debug API response
 
-        if (!data.role || data.role !== "admin") {
-          throw new Error("Access Denied: You are not an admin");
-        }
-
-        localStorage.setItem("adminToken", data.token);
-        navigate("/admin/dashboard");
-      } catch (err) {
-        console.error("Login Error:", err.message);
-        setError(err.message);
-      } finally {
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error(data.message || "Login failed"); // 👈 Error Message from API
       }
-    };
-  
+
+
+      if (!data.role || data.role !== "admin") {
+        throw new Error("Access Denied: You are not an admin");
+      }
+
+      localStorage.setItem("adminToken", data.token);
+      navigate("/admin/dashboard");
+    } catch (err) {
+      console.error("Login Error:", err.message);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <Container maxWidth="sm">

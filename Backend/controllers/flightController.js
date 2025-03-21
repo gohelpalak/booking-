@@ -1,7 +1,6 @@
 const Flight = require("../models/Flight");
 const express = require("express");
-const router = express.Router();
-// const uploas = require("../middleware/uploadMiddleware");
+// const router = express.Router();
 const upload = require("../middleware/uploadMiddleware");
 
 exports.getflights = async(req,res)=>{
@@ -13,17 +12,21 @@ exports.getflights = async(req,res)=>{
     }
 }
 
-exports.addflight = upload.single("image"), async (req,res)=>{
-    try{
-    const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
+exports.addflight = async (req, res) => {
+    try {
+        const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
-        const flight = new Flight(req.body,imageUrl);
+        const flightData = { ...req.body, image: imageUrl }; // 🛠️ Corrected data structure
+        const flight = new Flight(flightData); // 🛠️ Spread operator for proper object structure
+
         await flight.save();
-        res.status(201).json({message:"Flight add successfully",flight});
-    }catch(error){
-        res.status(400).json({message:"Invalid Data",error});
+        res.status(201).json({ message: "Flight added successfully", flight });
+    } catch (error) {
+        res.status(400).json({ message: "Invalid Data", error });
     }
-}
+};
+
+
 
 exports.getFlightById = async (req, res) => {
     try {

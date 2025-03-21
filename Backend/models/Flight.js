@@ -17,14 +17,22 @@ const flightSchema = new mongoose.Schema({
         type: String,
         required: true
     },      // Arrival Location
+    // departureTime: {
+    //     type: Date,
+    //     required: true
+    // },  // Departure Time
+    // arrivalTime: {
+    //     type: Date,
+    //     required: true
+    // },    // Arrival Time
     departureTime: {
-        type: Date,
+        type: String,
         required: true
-    },  // Departure Time
+    },
     arrivalTime: {
-        type: Date,
+        type: String,
         required: true
-    },    // Arrival Time
+    },
     price: {
         type: Number,
         required: true
@@ -36,10 +44,10 @@ const flightSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    } ,   // Record Creation Time
+    },   // Record Creation Time
 
-    imageUrl:{
-        type:String
+    imageUrl: {
+        type: String
     }
 });
 

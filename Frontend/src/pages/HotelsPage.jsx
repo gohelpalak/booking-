@@ -9,7 +9,7 @@ const HotelsPage = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axios.get("http://localhost:2024/hotel/getallhotel");
+        const response = await axios.get("http://localhost:2000/hotel/getallhotel");
         setHotels(response.data);
       } catch (error) {
         console.error("Error fetching hotels:", error);
@@ -23,7 +23,7 @@ const HotelsPage = () => {
       <Typography variant="h4" className="mb-6 text-center">
         🏨 Available Hotels
       </Typography>
-      
+
       <Grid container spacing={4}>
         {hotels.map((hotel) => (
           <Grid item xs={12} sm={6} md={4} key={hotel._id}>
