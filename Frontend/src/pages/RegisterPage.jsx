@@ -29,7 +29,7 @@ const RegisterPage = () => {
     setError("");
 
     try {
-      await axios.post("http://localhost:2000/Admin/register", user);
+      await axios.post("https://booking-d3vy.onrender.com/Admin/register", user);
       alert("Registration Successful! Please Login.");
       navigate("/login");
     } catch (err) {

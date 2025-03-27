@@ -17,7 +17,7 @@ const FlightsManagement = () => {
     useEffect(() => {
         const fetchFlights = async () => {
             try {
-                const response = await fetch("http://localhost:2000/flight/flights", {
+                const response = await fetch("https://booking-d3vy.onrender.com/flight/flights", {
                     headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` },
                 });
                 if (!response.ok) throw new Error("Failed to fetch flights");
@@ -33,7 +33,7 @@ const FlightsManagement = () => {
 
     const handleAddFlight = async () => {
         try {
-            const response = await fetch("http://localhost:2000/flight/createflight", {
+            const response = await fetch("https://booking-d3vy.onrender.com/flight/createflight", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -56,7 +56,7 @@ const FlightsManagement = () => {
 
     const handleDeleteFlight = async (id) => {
         try {
-            const response = await fetch(`http://localhost:2000/flight/deleteflight/${id}`, {
+            const response = await fetch(`https://booking-d3vy.onrender.com/flight/deleteflight/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` },
             });

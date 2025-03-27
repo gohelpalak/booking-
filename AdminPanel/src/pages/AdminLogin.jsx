@@ -18,7 +18,7 @@ const AdminLogin = () => {
     console.log("email", email, "password", password);
 
     try {
-      const response = await fetch("http://localhost:2000/admin/login", {
+      const response = await fetch("https://booking-d3vy.onrender.com/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

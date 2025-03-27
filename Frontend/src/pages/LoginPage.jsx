@@ -19,7 +19,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:2000/Admin/login", { email, password });
+      const response = await axios.post("https://booking-d3vy.onrender.com/Admin/login", { email, password });
 
       const userData = {
         name: response.data.name,

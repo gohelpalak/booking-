@@ -20,7 +20,7 @@ const BookingPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:2000/bookings", bookingData);
+      const response = await axios.post("https://booking-d3vy.onrender.com/bookings", bookingData);
       console.log(response.data);
       navigate("/confirmation");
     } catch (error) {

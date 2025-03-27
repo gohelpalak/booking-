@@ -12,7 +12,7 @@ const HotelsManagement = () => {
     useEffect(() => {
         const fetchHotels = async () => {
             try {
-                const response = await fetch("http://localhost:2000/hotel/getallhotel", {
+                const response = await fetch("https://booking-d3vy.onrender.com/hotel/getallhotel", {
                     headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` },
                 });
                 const data = await response.json();
@@ -30,7 +30,7 @@ const HotelsManagement = () => {
     const handleAddHotel = async () => {
         try {
             console.log("Adding hotel:", newHotel); // Debugging
-            const response = await fetch("http://localhost:2000/hotel/createhotel", {
+            const response = await fetch("https://booking-d3vy.onrender.com/hotel/createhotel", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const HotelsManagement = () => {
 
     const handleDeleteHotel = async (id) => {
         try {
-            const response = await fetch(`http://localhost:2000/hotel/deletehotel/${id}`, {
+            const response = await fetch(`https://booking-d3vy.onrender.com/hotel/deletehotel/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` },
             });

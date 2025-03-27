@@ -9,7 +9,7 @@ const HotelsPage = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axios.get("http://localhost:2000/hotel/getallhotel");
+        const response = await axios.get("https://booking-d3vy.onrender.com/hotel/getallhotel");
         setHotels(response.data);
       } catch (error) {
         console.error("Error fetching hotels:", error);

@@ -13,7 +13,7 @@ const HotelDetailsPage = () => {
   useEffect(() => {
     const fetchHotel = async () => {
       try {
-        const response = await axios.get(`http://localhost:2000/hotel/gethotelbyid/${id}`);
+        const response = await axios.get(`https://booking-d3vy.onrender.com/hotel/gethotelbyid/${id}`);
         setHotel(response.data);
       } catch (error) {
         console.error("Error fetching hotel details:", error);
@@ -25,7 +25,7 @@ const HotelDetailsPage = () => {
   const handleBooking = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:2000/booking/createbooking", {
+      const response = await axios.post("https://booking-d3vy.onrender.com/booking/createbooking", {
         hotelId: id,
         userId: user.id, // Replace with actual user ID,
 
